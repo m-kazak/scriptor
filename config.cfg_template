@@ -1,0 +1,39 @@
+{
+    "server": {
+        "traceHTTP": 1,
+        "secret_byte": 32,
+        "secret_salt": "Secret JWT Salt"
+    },
+    "database": {
+        "host": "127.0.0.1",
+        "port": "1111",
+        "dbname": "DATABASE",
+        "user": "schema_name",
+        "password": "pass"
+    },
+    "app": {
+        "ms": {
+            "auth_url": "https://login.live.com/oauth20_token.srf",
+            "client_id": "qazwsxedc-12qw-34er-56ty-1234rewq",
+            "client_secret": "1qaz!QAZ2wsx@WSX",
+            "redirect_uri": "http://localhost:4200/auth",
+            "scope": "openid",
+            "grant_type": "authorization_code"
+        }
+    },
+    "logger": {
+        "file": "log.txt",
+        "flag": 3,
+        "level": 6
+    },
+    "errors": {
+        "none": 0,
+        "auth": 1,
+        "module_access": 2,
+        "logout": 3,
+        "session": 4,
+        "trace": 5,
+        "user_info": 6,
+        "license_info": 7
+    }
+}
