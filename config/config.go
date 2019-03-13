@@ -63,10 +63,20 @@ func LoadConfiguration(file string) {
 		fmt.Println(err.Error())
 	}
 	jsonParser := json.NewDecoder(configFile)
-	jsonParser.Decode(&Config)
+	err = jsonParser.Decode(&Config)
+	if err != nil {
+		fmt.Println("Can't load configuration file:" + err.Error())
+		os.Exit(1)
+	}
 
-	Config.Server.SecretSalt = generateJWTSalt(Config.Server.SecretBytes)
-
+	if Config.Server.SecretSalt == "" {
+		if Config.Server.SecretBytes == 0 {
+			Config.Server.SecretSalt = generateJWTSalt(32)
+		} else {
+			Config.Server.SecretSalt = generateJWTSalt(Config.Server.SecretBytes)
+		}
+	}
+	
 	fmt.Println("Configuration loaded")
 }
 

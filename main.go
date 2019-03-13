@@ -20,7 +20,6 @@ var (
 func init() {
 	config.LoadConfiguration("./config.cfg")
 	config.LoadLogger(config.Config.Logger.File, config.Config.Logger.Flag, config.Config.Logger.Level)
-	config.Loggy.Debug("qweS")
 }
 
 func main() {
@@ -38,6 +37,7 @@ func startServer() {
 	hnd := mux.NewRouter()
 
 	hnd.Handle("/", handler.StatusHandler).Methods("GET")
+	hnd.Handle("/verify", handler.Verify).Methods("POST")
 
 	srv := &http.Server{
 		Addr:           ":8000",

@@ -12,11 +12,8 @@ import (
 
 //StatusHandler is used for check server state
 var StatusHandler = http.HandlerFunc(func(response http.ResponseWriter, request *http.Request) {
-	_, err := traceHTTPRequest(request)
-	if err != nil {
-		responseMessage(GeneralResponse{config.Config.Errors.Trace, err.Error()}, response, request)
-        return
-	}
+	traceHTTPRequest(request)
+
 	responseMessage(GeneralResponse{config.Config.Errors.None, ""}, response, request)
 	return
 })
@@ -32,7 +29,7 @@ func responseMessage(data interface{}, response http.ResponseWriter, request *ht
 }
 
 //traceHTTPRequest trace HTTP communication
-func traceHTTPRequest(r *http.Request) (int, error) {
+func traceHTTPRequest(r *http.Request) {
 	
 	if (config.Config.Server.TraceHTTP == 1) {
 
@@ -49,6 +46,4 @@ func traceHTTPRequest(r *http.Request) (int, error) {
 			fmt.Println(r.Form.Encode())
 		}
 	}
-	
-	return 1, nil
 }
