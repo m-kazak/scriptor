@@ -6,7 +6,7 @@
     },
     "database": {
         "host": "127.0.0.1",
-        "port": "1111",
+        "port": 1111,
         "dbname": "DATABASE",
         "user": "schema_name",
         "password": "pass"

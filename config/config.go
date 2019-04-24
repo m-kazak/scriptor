@@ -19,7 +19,7 @@ type Configuration struct {
 	} `json:"server"`
 	Database struct {
 		Host     string `json:"host"`
-		Port     string `json:"port"`
+		Port     int    `json:"port"`
 		Dbname   string `json:"dbname"`
 		User     string `json:"user"`
 		Password string `json:"password"`
